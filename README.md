@@ -15,3 +15,4 @@ or
 ```python3 -m pip install -r requirements.txt```
 4. run serial write script and read script
 	* serial port must be read while writing or it will pause till read
+	* some systems may automatically read the port
