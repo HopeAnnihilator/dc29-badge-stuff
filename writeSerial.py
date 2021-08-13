@@ -80,23 +80,12 @@ def circle(leds):
         sleep(0.02)
 
 
-def create_brightness(): 
-    brightnesses = [randint(min_brightness, max_brightness), randint(min_brightness, max_brightness), randint(min_brightness, max_brightness)]
+def exit_on(): 
+    brightnesses = sample(range(min_brightness, max_brightness), 3)
     for i in brightnesses:
         if i >= max_brightness / 1.5:
             return brightnesses
-    create_brightness()
-
-def leds_on():
-    for i in range(1, 5):
-        brightness = create_brightness()
-        ser.write(b'1')
-        ser.write(str(i).encode())
-        ser.write((str(brightness[0]) + '\r').encode())
-        ser.write((str(brightness[1]) + '\r').encode())
-        ser.write((str(brightness[2]) + '\r').encode())
-        ser.write(b'y')
-        sleep(0.01)
+    exit_on()
 
 def main():
     global leds
@@ -129,7 +118,9 @@ def main():
 
 
     except KeyboardInterrupt:
-        leds_on()
+        for led in leds:
+            rgb = exit_on()
+            change_led(led, rgb)
         exit()
 
 
