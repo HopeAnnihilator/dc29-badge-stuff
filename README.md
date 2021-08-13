@@ -1,9 +1,17 @@
+
 # dc29-badge-stuff
 
-Ahem its me writing documentation for like the first time in my life
-ok so to start install the requirements 
-if you cant figure this out, you need both python 3.x and access to the pip module
-2. run the read.py file, this will read all serial output as device cannot function without sending data, i hope to improve this later....
-finally, run the viaserial.py and edit any functions or shit you would like, yes this all needs to be sudo
+This is my dumb project to make the Defcon 29 Badge blink colors.
 
-goodbye im tired of rigting
+### Getting Started
+1. Setup a python virtual environment
+```python3 -m venv .venv```
+2. Source you virtual environment
+Windows ```.venv/scripts/activate```
+Bash ```source .venv/bin/activate```
+3. Install requirements
+```pip3 install -r requirements.txt``` 
+or 
+```python3 -m pip install -r requirements.txt```
+4. run serial write script and read script
+	* serial port must be read while writing or it will pause till read
